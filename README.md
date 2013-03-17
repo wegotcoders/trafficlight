@@ -46,3 +46,4 @@ the TL::Stop state on startup.
 * Implement the click method, so that every time the traffic light is clicked, 
 the colours cycle through the states given in the TrafficLight class
 * Change the TrafficLight class so the pattern matches US-style traffic lights.
+* When you're done, submit a pull request so that I can review your work.
