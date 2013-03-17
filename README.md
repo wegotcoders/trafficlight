@@ -24,14 +24,22 @@ We'll be modifying a Shoes application that models a traffic light.
 * Using inheritance, implement 3 subclasses of Bulb: GoBulb, WaitBulb and 
 StopBulb. Change the subclasses so that when we define them, the correct colour
 is displayed. Suggest that the following colours are used:
-  |Go  | "#00FF30" | 
-  |Wait| "#FFFC00" |
-  |Stop| "#FF0000" |
+
+|State|Colour|
+|:----------|:-----------|
+|Go  | "#00FF30" | 
+|Wait| "#FFFC00" |
+|Stop| "#FF0000" |
+
 * Refactor the implementation so that the colours are defined once in a module 
 called TL, and we can refer to colours with the following syntax:
-  |TL:Go  | "#00FF30" | 
-  |TL:Wait| "#FFFC00" |
-  |TL:Stop| "#FF0000" |
+
+|State|Colour|
+|:----------|:-----------|
+|TL:Go  | "#00FF30" | 
+|TL:Wait| "#FFFC00" |
+|TL:Stop| "#FF0000" |
+
 * Refactor the implementation so that a bulb only shows its true colour when it 
 is switched on, otherwise it shows grey. Fix the application so that it shows 
 the TL::Stop state on startup. 
