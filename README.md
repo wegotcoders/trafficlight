@@ -6,17 +6,29 @@ A traffic light application to drive home some Ruby OOP principles.
 # INSTALL
 
 1. Get a copy of Shoes running, resources online at:
-    https://github.com/shoes/shoes/wiki/Building-Shoes
-    http://shoesrb.com/manual/Installing.html
-    
-2. Fork your own copy of this exercise and clone it
-  * fork
-  * git clone url
-  * cd TrafficLight
 
-3. Run
+> https://github.com/shoes/shoes/wiki/Building-Shoes
+
+> http://shoesrb.com/manual/Installing.html
+
+I had to add the following line to my ~/.bashrc to get this running on OSX:
+
+```
+PATH=/Applications/Shoes.app/Contents/MacOS:$PATH
+```
+
+2. Fork your own copy of this exercise and clone it
+ 
+```
+  git clone https://github.com/dmgarland/TrafficLight.git
+  cd TrafficLight
+```
+
+3. Run it!
+```
     shoes traffic.rb
-    
+``` 
+
 # TODO
 
 We'll be modifying a Shoes application that models a traffic light.
