@@ -48,9 +48,9 @@ called TL, and we can refer to colours with the following syntax:
 
 |State|Colour|
 |:----------|:-----------|
-|TL:Go  | "#00FF30" | 
-|TL:Wait| "#FFFC00" |
-|TL:Stop| "#FF0000" |
+|TL::Go  | "#00FF30" | 
+|TL::Wait| "#FFFC00" |
+|TL::Stop| "#FF0000" |
 
 * Refactor the implementation so that a bulb only shows its true colour when it 
 is switched on, otherwise it shows grey. Fix the application so that it shows 
