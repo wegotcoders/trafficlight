@@ -7,14 +7,18 @@ A traffic light application to drive home some Ruby OOP principles.
 
 1. Get a copy of Shoes running, resources online at:
 
-> https://github.com/shoes/shoes/wiki/Building-Shoes
+> https://github.com/shoes/shoes4
 
-> http://shoesrb.com/manual/Installing.html
-
-I had to add the following line to my ~/.bashrc to get this running on OSX:
+* You'll need to install jruby:
 
 ```
-PATH=/Applications/Shoes.app/Contents/MacOS:$PATH
+	$ rvm install jruby
+```
+
+* And then shoes4:
+
+```
+	$ gem install shoes --pre
 ```
 
 2. Fork your own copy of this exercise and clone it
@@ -25,6 +29,7 @@ PATH=/Applications/Shoes.app/Contents/MacOS:$PATH
 ```
 
 3. Run it!
+
 ```
     shoes traffic.rb
 ```

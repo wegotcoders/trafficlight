@@ -25,12 +25,8 @@ class Bulb < Shoes::Shape
   
   # HINT: Shouldn't need to change this method
   def draw(left, top, colour)    
-    stack.app do
-      fill colour
-      stack.append do
-        oval left, top, 50
-      end
-    end
+    stack.fill(colour)
+    stack.oval(left, top, 50)
   end
   
   def bulb_colour
@@ -39,7 +35,7 @@ class Bulb < Shoes::Shape
 end
 
 Shoes.app :title => "My Amazing Traffic Light", :width => 150, :height => 250 do
-  background "000", :curve => 10, :margin => 25  
+  background "#000000".."#666666", :curve => 10, :margin => 25  
   stroke black    
   
   @traffic_light = TrafficLight.new
