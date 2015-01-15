@@ -1,3 +1,9 @@
+module TL
+  Go = "#00FF30"
+  Wait = "#FFFC00"
+  Stop = "#FF0000"
+end
+
 class TrafficLight  
   include Enumerable
 
@@ -36,19 +42,19 @@ end
 
   class GoBulb < Bulb
     def bulb_colour 
-      "#00FF30"
+      TL::Go
     end
   end
   
   class WaitBulb < Bulb
     def bulb_colour 
-      "#FFFC00"
+      TL::Wait
     end
   end
   
   class StopBulb < Bulb
     def bulb_colour 
-      "#FF0000"
+      TL::Stop
     end
   end
 
