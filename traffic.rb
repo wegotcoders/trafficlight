@@ -84,17 +84,67 @@ Shoes.app :title => "My Amazing Traffic Light", :width => 150, :height => 250 do
   @middle = WaitBulb.new self, 50, 100, false
   @bottom = StopBulb.new self, 50, 160, true
   
-  counter = 0
   click do
-    @traffic_light.each {|state|
-      puts state.to_s
-      @top.switched_on = state[0]
-      @top.draw(@top.left, @top.top, @top.bulb_colour)
-      @middle.switched_on = state[1]
-      @middle.draw(@middle.left, @middle.top, @middle.bulb_colour)
-      @bottom.switched_on = state[2]
-      @bottom.draw(@bottom.left, @bottom.top, @bottom.bulb_colour)
-      sleep(1)
-    }
+
+    # counter = 0
+
+    # every(10) {
+    #   time = 0
+
+    # @traffic_light.entries.each {|x|
+    #   every (time + 2) {
+    #   puts x.inspect
+    #   time += 2
+    #       }
+    #   }
+    # }
+
+    # every(10){
+
+    #   @traffic_light.each {|state|
+
+    #     every(){
+    #     puts "oCounter: #{counter}"
+    #     puts "State: #{state}"
+
+    #       @top.switched_on = state[0]
+    #       @middle.switched_on = state[1]
+    #       @bottom.switched_on = state[2]
+
+    #       puts "#{@top.bulb_colour} #{@middle.bulb_colour} #{@bottom.bulb_colour}"
+
+
+    #       @top.draw(@top.left, @top.top, @top.bulb_colour)
+    #       @middle.draw(@middle.left, @middle.top, @middle.bulb_colour)
+    #       @bottom.draw(@bottom.left, @bottom.top, @bottom.bulb_colour)
+
+    #     counter += 1
+    #     }
+    #   }
+
+    #}
+
+    for i in 0..@traffic_light.entries.length-1 do
+      counter = 0
+      puts "i = #{i}"
+      time = 2 + i
+      puts "time #{time}"
+      every(time) {
+          @top.switched_on = @traffic_light.entries[i][0]
+          @middle.switched_on = @traffic_light.entries[i][1]
+          @bottom.switched_on = @traffic_light.entries[i][2]
+
+          @top.draw(@top.left, @top.top, @top.bulb_colour)
+          @middle.draw(@middle.left, @middle.top, @middle.bulb_colour)
+          @bottom.draw(@bottom.left, @bottom.top, @bottom.bulb_colour)
+          counter += 1
+          puts "counter #{counter}"
+        }
+
+    end
+
+
+
+
   end
 end
