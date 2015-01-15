@@ -31,17 +31,67 @@ class Bulb < Shoes::Shape
   
   def bulb_colour
     "#999999"
-  end  
+  end
+
 end
+
+module TL
+  Go = "#00FF30"
+  Wait = "#FFFC00"
+  Stop = "#FF0000"
+  Off = "#999999"
+end
+
+
+class GoBulb < Bulb
+  def bulb_colour
+    if self.switched_on?
+      TL::Go
+    else
+      TL::Off
+  end
+end
+
+
+class WaitBulb < Bulb
+  def bulb_colour
+    if self.switched_on?
+      TL::Wait
+    else
+      TL::Off
+  end
+end
+
+class StopBulb < Bulb
+  def bulb_colour
+    if self.switched_on?
+      TL::Stop
+    else
+      TL::Off
+  end
+end
+
+
+
+while true
+  TrafficLight.each { |array|
+  @top.
+  sleep(1)
+
+
+
+}
+end
+
 
 Shoes.app :title => "My Amazing Traffic Light", :width => 150, :height => 250 do
   background "#000000".."#666666", :curve => 10, :margin => 25  
   stroke black    
   
   @traffic_light = TrafficLight.new
-  @top = Bulb.new self, 50, 40, true     
-  @middle = Bulb.new self, 50, 100, true
-  @bottom = Bulb.new self, 50, 160, true
+  @top = GoBulb.new self, 50, 40, true     
+  @middle = WaitBulb.new self, 50, 100, true
+  @bottom = StopBulb.new self, 50, 160, true
   
   click do
     
