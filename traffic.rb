@@ -28,29 +28,36 @@ class Bulb < Shoes::Shape
     stack.fill(colour)
     stack.oval(left, top, 50)
   end
-  
+
   def bulb_colour
     "#999999"
   end  
 end
 
-class GoBulb < Bulb
-  def bulb_colour
-    "#00FF30"
-  end
+
+module TL
+  Go = "#00FF30"
+  Wait = "#FFFC00"
+  Stop = "#FF0000"
 end
 
-class WaitBulb < Bulb
-  def bulb_colour
-    "#FFFC00"
+  class GoBulb < Bulb
+    def bulb_colour
+      TL::Go
+    end
   end
-end
 
-class StopBulb < Bulb
-  def bulb_colour
-    "#FF0000"
+  class WaitBulb < Bulb
+    def bulb_colour
+      TL::Wait
+    end
   end
-end
+
+  class StopBulb < Bulb
+    def bulb_colour
+      TL::Stop
+    end
+  end
 
 Shoes.app :title => "My Amazing Traffic Light", :width => 150, :height => 250 do
   background "#000000".."#666666", :curve => 10, :margin => 25  
