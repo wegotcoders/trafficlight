@@ -87,14 +87,15 @@ Shoes.app :title => "My Amazing Traffic Light", :width => 150, :height => 250 do
   counter = 0
   click do
     @traffic_light.each {|state|
-      puts state.to_s
-      @top.switched_on = state[0]
-      @top.draw(@top.left, @top.top, @top.bulb_colour)
-      @middle.switched_on = state[1]
-      @middle.draw(@middle.left, @middle.top, @middle.bulb_colour)
-      @bottom.switched_on = state[2]
-      @bottom.draw(@bottom.left, @bottom.top, @bottom.bulb_colour)
-      sleep(1)
+      animate(1) do
+        puts state.to_s
+        @top.switched_on = state[0]
+        @top.draw(@top.left, @top.top, @top.bulb_colour)
+        @middle.switched_on = state[1]
+        @middle.draw(@middle.left, @middle.top, @middle.bulb_colour)
+        @bottom.switched_on = state[2]
+        @bottom.draw(@bottom.left, @bottom.top, @bottom.bulb_colour)
+      end
     }
   end
 end
