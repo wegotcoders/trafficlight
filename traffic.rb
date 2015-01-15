@@ -80,9 +80,9 @@ Shoes.app :title => "My Amazing Traffic Light", :width => 150, :height => 250 do
   stroke black    
   
   @traffic_light = TrafficLight.new
-  @top = GoBulb.new self, 50, 40, false    
+  @top = StopBulb.new self, 50, 40, false    
   @middle = WaitBulb.new self, 50, 100, false
-  @bottom = StopBulb.new self, 50, 160, true
+  @bottom = GoBulb.new self, 50, 160, true
   
   click do
 
@@ -124,24 +124,52 @@ Shoes.app :title => "My Amazing Traffic Light", :width => 150, :height => 250 do
 
     #}
 
-    for i in 0..@traffic_light.entries.length-1 do
-      counter = 0
-      puts "i = #{i}"
-      time = 2 + i
-      puts "time #{time}"
-      every(time) {
-          @top.switched_on = @traffic_light.entries[i][0]
-          @middle.switched_on = @traffic_light.entries[i][1]
-          @bottom.switched_on = @traffic_light.entries[i][2]
+
+    # # i being stuck on 3, so that it doesnt change
+    # for i in 0..@traffic_light.entries.length-1 do
+    #   counter = 0
+    #   puts "i = #{i}"
+    #   time = 2 + i*2
+    #   puts "time #{time}"
+    #   every(time) {
+    #       @top.switched_on = @traffic_light.entries[i][0]
+    #       @middle.switched_on = @traffic_light.entries[i][1]
+    #       @bottom.switched_on = @traffic_light.entries[i][2]
+
+    #       @top.draw(@top.left, @top.top, @top.bulb_colour)
+    #       @middle.draw(@middle.left, @middle.top, @middle.bulb_colour)
+    #       @bottom.draw(@bottom.left, @bottom.top, @bottom.bulb_colour)
+    #       counter += 1
+    #       puts "counter #{counter}"
+    #     }
+
+    # end
+
+
+every (10) {
+      @traffic_light.entries.each_index {|x| 
+      puts x
+      puts @traffic_light.entries[x]
+
+      timer(2+2*x) {
+
+          @top.switched_on = @traffic_light.entries[x][0]
+          @middle.switched_on = @traffic_light.entries[x][1]
+          @bottom.switched_on = @traffic_light.entries[x][2]
 
           @top.draw(@top.left, @top.top, @top.bulb_colour)
           @middle.draw(@middle.left, @middle.top, @middle.bulb_colour)
           @bottom.draw(@bottom.left, @bottom.top, @bottom.bulb_colour)
-          counter += 1
-          puts "counter #{counter}"
-        }
 
-    end
+      }
+    }
+  }
+
+
+
+
+
+
 
 
 
