@@ -43,7 +43,7 @@ end
 
 class GoBulb < Bulb
   def bulb_colour
-    if self.switched_on == true 
+    if self.switched_on 
       TL::Go 
     else
       TL::Off
@@ -54,7 +54,7 @@ end
 
 class WaitBulb < Bulb
     def bulb_colour
-        if self.switched_on == true 
+        if self.switched_on 
       TL::Wait 
     else
       TL::Off
@@ -65,7 +65,7 @@ end
 
 class StopBulb < Bulb
     def bulb_colour
-       if self.switched_on == true 
+       if self.switched_on 
       TL::Stop 
     else
       TL::Off
