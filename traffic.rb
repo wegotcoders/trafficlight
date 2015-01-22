@@ -10,10 +10,7 @@ class TrafficLight
 end
 
 class Bulb < Shoes::Shape
-  attr_accessor :stack
-  attr_accessor :left
-  attr_accessor :top
-  attr_accessor :switched_on
+  attr_accessor :stack , :left, :top, :switched_on
   
   def initialize(stack, left, top, switched_on = false)    
     self.stack = stack
@@ -23,7 +20,6 @@ class Bulb < Shoes::Shape
     draw left, top, bulb_colour
   end
   
-  # HINT: Shouldn't need to change this method
   def draw(left, top, colour)    
     stack.fill(colour)
     stack.oval(left, top, 50)
@@ -43,31 +39,19 @@ end
 
   class StopBulb < Bulb
     def bulb_colour
-      if switched_on
-      TL::Stop
-      else
-      "#999999"
-      end
+      switched_on ? TL::Stop : "#999999"
     end
   end
 
   class WaitBulb < Bulb
     def bulb_colour
-      if switched_on
-      TL::Wait
-      else
-      "#999999"
-      end
+      switched_on ? TL::Wait : "#999999"
     end
   end
 
    class GoBulb < Bulb
     def bulb_colour
-      if switched_on
-      TL::Go
-      else
-      "#999999"
-      end
+      switched_on ? TL::Go : "#999999"
     end
   end
 
@@ -80,13 +64,12 @@ Shoes.app :title => "My Amazing Traffic Light", :width => 150, :height => 250 do
   @middle = WaitBulb.new self, 50, 100, false
   @bottom = GoBulb.new self, 50, 160, false
   
-  #animate(1) do
-  i = 0
+  i = 1
   click do 
     animate(4) do
-      if i <= 3
-        state = @traffic_light.to_a[i] 
-          @top = StopBulb.new self, 50, 40, state[0]     
+      if i < 4
+        state = @traffic_light.entries[i]
+          @top = StopBulb.new self, 50, 40, state[0]   
           @middle = WaitBulb.new self, 50, 100, state[1]
           @bottom = GoBulb.new self, 50, 160, state[2]
           i+=1
@@ -94,10 +77,6 @@ Shoes.app :title => "My Amazing Traffic Light", :width => 150, :height => 250 do
         i=0
       end
     end
-  #end
-      
-    #How can we change i?
-    #   @traffic_light.next
   end
 end
 
