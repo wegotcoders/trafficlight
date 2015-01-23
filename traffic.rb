@@ -37,23 +37,24 @@ module TL
   Stop = "#FF0000"
 end
 
-  class StopBulb < Bulb
-    def bulb_colour
-      switched_on ? TL::Stop : "#999999"
-    end
-  end
 
-  class WaitBulb < Bulb
-    def bulb_colour
-      switched_on ? TL::Wait : "#999999"
-    end
+class StopBulb < Bulb
+  def bulb_colour
+    switched_on ? TL::Stop : "#999999"
   end
+end
 
-   class GoBulb < Bulb
-    def bulb_colour
-      switched_on ? TL::Go : "#999999"
-    end
+class WaitBulb < Bulb
+  def bulb_colour
+    switched_on ? TL::Wait : "#999999"
   end
+end
+
+class GoBulb < Bulb
+  def bulb_colour
+    switched_on ? TL::Go : "#999999"
+  end
+end
 
 Shoes.app :title => "My Amazing Traffic Light", :width => 150, :height => 250 do
   background "#000000".."#666666", :curve => 10, :margin => 25  
